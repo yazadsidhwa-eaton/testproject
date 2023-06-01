@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-    AppBar,
-    Button,
-    Grid,
-    Toolbar,
-    Typography,
-    Box,
-    IconButton,
-    useTheme,
-    Link,
-    TextField,
-} from '@mui/material';
+import { AppBar, Button, Grid, Toolbar, Typography, Box, IconButton, useTheme, Link, TextField } from '@mui/material';
 
 import { GitHub, Search, QuestionAnswer, Code, Email } from '@mui/icons-material';
 import { CustomComponent } from './components/CustomComponent';
@@ -52,7 +41,6 @@ export const App = (): JSX.Element => {
             </AppBar>
 
             <Grid container spacing={0} style={styles.mainContainer}>
-                
                 <Grid item xs={7}>
                     <Box
                         sx={{
@@ -96,10 +84,8 @@ export const App = (): JSX.Element => {
                         </Box>
                     </Box>
                 </Grid>
-                <img src={design} alt="design"  width={"100%"} />
+                <img src={design} alt="design" width={'100%'} />
             </Grid>
-
-            
 
             <Box
                 sx={{
