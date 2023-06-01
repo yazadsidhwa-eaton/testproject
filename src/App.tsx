@@ -2,133 +2,189 @@ import React from 'react';
 import {
     AppBar,
     Button,
-    Divider,
     Grid,
-    IconButton,
     Toolbar,
     Typography,
     Box,
-    useMediaQuery,
+    IconButton,
     useTheme,
+    Link,
+    TextField,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { BluiSVG } from './Logo';
-import { styled } from '@mui/material/styles';
 
-const BluiSVGStyled = styled(BluiSVG)({
-    '@keyframes spin': {
-        '100%': {
-            transform: 'rotate(360deg)',
-        },
+import { GitHub, Search, QuestionAnswer, Code, Email } from '@mui/icons-material';
+import { CustomComponent } from './components/CustomComponent';
+import EatonSmall from './assets/eaton.svg';
+import EatonFooter from './assets/eatonfooter.svg';
+import background from './assets/Background.svg';
+import design from './assets/buildingDesign.png';
+
+const styles = {
+    mainContainer: {
+        height: 750,
+        backgroundImage: `url(${background})`,
     },
-    animation: '2500ms spin linear infinite',
-});
+
+    footerContainer: {
+        backgroundColor: '#1D2529',
+        color: '#FFFFFF',
+    },
+};
 
 export const App = (): JSX.Element => {
     const theme = useTheme();
-    const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <Box sx={{ backgroundColor: theme.palette.background.paper, minHeight: '100vh', position: 'relative' }}>
-            <AppBar position={'fixed'}>
-                <Toolbar sx={{ px: 2 }}>
-                    <IconButton color={'inherit'} edge={'start'} style={{ marginRight: theme.spacing(3) }} size="large">
-                        <MenuIcon />
+            <AppBar position={'static'} sx={{ backgroundColor: 'white' }} elevation={5}>
+                <Toolbar>
+                    <IconButton edge="start" color="inherit" aria-label="logo">
+                        <img src={EatonSmall} alt="logo" height="15px" />
                     </IconButton>
-                    <Typography variant={'h6'} color={'inherit'}>
-                        Brightlayer UI React
+                    <Typography variant={'h6'} color={'#424E54'} sx={{ flexGrow: 1 }}>
+                        Innersource Portal
                     </Typography>
+                    <Button sx={{ backgroundColor: '#007BC1', color: 'white' }}>
+                        <GitHub />
+                        &nbsp; Log In with GitHub
+                    </Button>
                 </Toolbar>
             </AppBar>
+
+            <Grid container spacing={0} style={styles.mainContainer}>
+                
+                <Grid item xs={7}>
+                    <Box
+                        sx={{
+                            minHeight: '75vh',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            // p: `${theme.spacing(25)} ${theme.spacing(35)}`,
+                        }}
+                    >
+                        <Box style={{ maxWidth: 600 }}>
+                            <Typography variant="h2">All of Eaton.</Typography>
+                            <Typography variant="h1">Shared.</Typography>
+                            <br></br>
+                            <br></br>
+                            <Button sx={{ backgroundColor: '#007BC1', color: 'white' }}>
+                                <GitHub />
+                                &nbsp; Log In with GitHub
+                            </Button>
+                        </Box>
+                    </Box>
+                </Grid>
+                <Grid item xs={5}>
+                    <Box
+                        sx={{
+                            minHeight: '75vh',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            // p: `${theme.spacing(25)} ${theme.spacing(0)}`,
+                        }}
+                    >
+                        <Box style={{ maxWidth: 600 }}>
+                            <Typography variant={'h4'} color={'#727E84'}>
+                                Explore, share, discuss, and contribute your code with other fellow Eaton developers at
+                                the{' '}
+                            </Typography>
+                            <Typography variant={'h4'} color={'#424E54'}>
+                                <strong>Innersource portal.</strong>
+                            </Typography>
+                        </Box>
+                    </Box>
+                </Grid>
+                <img src={design} alt="design"  width={"100%"} />
+            </Grid>
+
+            
+
             <Box
                 sx={{
-                    minHeight: '100vh',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    p: `${theme.spacing(8)} ${theme.spacing(3)}`,
+                    backgroundColor: '#007BC1',
+                    minHeight: '90vh',
+                    color: 'white',
+                    p: `${theme.spacing(25)} ${theme.spacing(36)}`,
                 }}
             >
-                <Box style={{ maxWidth: 600, margin: '0 auto' }}>
-                    <Box style={{ textAlign: 'center' }}>
-                        <BluiSVGStyled size={sm ? 100 : 160} color={theme.palette.primary.main} />
-                        <Typography variant={sm ? 'h4' : 'h2'} paragraph>
-                            Welcome to Brightlayer{' '}
-                            <Box
-                                component="span"
-                                sx={{
-                                    color: theme.palette.primary.main,
-                                }}
-                            >
-                                UI
-                            </Box>
-                            .
-                        </Typography>
-                        <Typography variant={'body1'}>
-                            Edit <strong>src/App.tsx</strong> and save to reload.
-                        </Typography>
-                    </Box>
-                    {sm ? null : (
-                        <>
-                            <Divider sx={{ my: 3 }} />
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <Button target={'_blank'} href={'https://brightlayer-ui.github.io/'}>
-                                        Brightlayer UI Documentation
-                                    </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Button
-                                        target={'_blank'}
-                                        href={'https://brightlayer-ui.github.io/development/frameworks-web/react'}
-                                    >
-                                        React Getting Started Guide
-                                    </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Button target={'_blank'} href={'https://brightlayer-ui.github.io/patterns'}>
-                                        Design Pattern Descriptions
-                                    </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Button
-                                        target={'_blank'}
-                                        href={'https://brightlayer-ui-components.github.io/react/'}
-                                    >
-                                        Brightlayer UI React Component Library
-                                    </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Button target={'_blank'} href={'https://github.com/brightlayer-ui'}>
-                                        Visit Us on GitHub
-                                    </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Button
-                                        target={'_blank'}
-                                        href={'https://github.com/brightlayer-ui/react-design-patterns'}
-                                    >
-                                        Design Pattern Source on GitHub
-                                    </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Button target={'_blank'} href={'https://brightlayer-ui.github.io/roadmap'}>
-                                        Release Roadmap
-                                    </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Button
-                                        target={'_blank'}
-                                        href={'https://brightlayer-ui.github.io/community/contactus'}
-                                    >
-                                        Send Feedback or Suggestions
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </>
-                    )}
-                </Box>
+                <Typography variant="h3"> How does Innersource Portal work?</Typography>
+                <br></br>
+                <Grid container rowSpacing={4} columnSpacing={{ xs: 1 }}>
+                    <Grid item xs={12}>
+                        <CustomComponent
+                            Icon={Search}
+                            title="Look up resources contributed by other developers"
+                            description="Lorem Ipsum Dor Si. Programmers share their work with a wide audience, instead of
+                                        just with a manager or team. In most open source projects, anyone in the world is
+                                        free to view the code, comment on it, learn new skills by examining it, and submit
+                                        changes that they think will improve it or customize it to their needs."
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <CustomComponent
+                            Icon={QuestionAnswer}
+                            title="Participate in Discussions"
+                            description="Lorem Ipsum Dor Si. Programmers share their work with a wide audience, instead of
+                                        just with a manager or team. In most open source projects, anyone in the world is
+                                        free to view the code, comment on it, learn new skills by examining it, and submit
+                                        changes that they think will improve it or customize it to their needs."
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <CustomComponent
+                            Icon={Code}
+                            title="Contribute to the Innersource Portal"
+                            description="Lorem Ipsum Dor Si. Programmers share their work with a wide audience, instead of
+                                        just with a manager or team. In most open source projects, anyone in the world is
+                                        free to view the code, comment on it, learn new skills by examining it, and submit
+                                        changes that they think will improve it or customize it to their needs."
+                        />
+                    </Grid>
+                </Grid>
             </Box>
+
+            <Grid container style={styles.footerContainer}>
+                <Grid item xs={7}>
+                    <Box
+                        sx={{
+                            p: `${theme.spacing(10)} ${theme.spacing(23)}`,
+                        }}
+                    >
+                        <IconButton edge="start" color="inherit" aria-label="logo">
+                            <img src={EatonFooter} alt="logo" height="30px" />
+                        </IconButton>
+
+                        <Typography>
+                            Website maintained by the{' '}
+                            <Link href="#" underline="always">
+                                Innersource Portal
+                            </Link>{' '}
+                            team.{' '}
+                            <Link href="#" underline="always">
+                                Let us know what you think
+                            </Link>
+                        </Typography>
+                        <Typography>All rights reserved.</Typography>
+                    </Box>
+                </Grid>
+                <Grid item xs={5}>
+                    <Box
+                        sx={{
+                            p: `${theme.spacing(9)} ${theme.spacing(0)}`,
+                        }}
+                    >
+                        <Typography variant="h6">Join Our Mailing List!</Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <Email sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                            <TextField id="input-with-sx" label="Email" variant="standard" />
+                            &nbsp;&nbsp;
+                            <Button sx={{ backgroundColor: '#007BC1', color: 'white' }}> Sign Me Up!</Button>
+                        </Box>
+                    </Box>
+                </Grid>
+            </Grid>
         </Box>
     );
 };
